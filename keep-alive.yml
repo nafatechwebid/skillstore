@@ -1,0 +1,26 @@
+name: Supabase Keep Alive
+
+# ================================================================
+# TUJUAN: Supabase gratis otomatis PAUSE kalau tidak ada aktivitas
+# selama 7 hari. Workflow ini "menyentuh" database setiap beberapa
+# hari sekali secara otomatis, supaya project Anda tidak pernah
+# dianggap tidak aktif — tanpa perlu server tambahan.
+# ================================================================
+
+on:
+  schedule:
+    # Jalan tiap 3 hari sekali jam 03:00 UTC (10:00 WIB).
+    # Aman jauh di bawah batas 7 hari Supabase.
+    - cron: '0 3 */3 * *'
+  workflow_dispatch: # tombol "Run workflow" manual di tab Actions, untuk tes
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping tabel mentors
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/mentors?select=id&limit=1" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}"
