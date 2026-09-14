@@ -8,7 +8,7 @@
    dibatasi oleh Row Level Security yang diatur di schema.sql)
    ================================================================ */
 
-const SUPABASE_URL = 'GANTI_DENGAN_PROJECT_URL_ANDA';
-const SUPABASE_ANON_KEY = 'GANTI_DENGAN_ANON_KEY_ANDA';
+const SUPABASE_URL = 'https://sdsxrlgkdmzyltbwkoif.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkc3hybGdrZG16eWx0Yndrb2lmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzODE3NzIsImV4cCI6MjEwNDk1Nzc3Mn0.T7eWW0YnbExFAKUHl2EuUP78p-FEIkCExlSCyftr9ds';
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
