@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Admin — SkillStore</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div class="login-wrap" id="loginView">
+  <div class="login-card">
+    <div class="logo">SkillStore<span>.web.id</span></div>
+    <p class="hint">Masuk untuk mengelola produk, mentor, dan materi gratis.</p>
+    <div class="msg error" id="loginMsg"></div>
+    <form id="loginForm">
+      <div class="form-group" style="margin-bottom:14px;">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" required>
+      </div>
+      <div class="form-group" style="margin-bottom:20px;">
+        <label for="loginPassword">Kata sandi</label>
+        <input type="password" id="loginPassword" required>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Masuk</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<div id="dashboardView" style="display:none;">
+  <header class="admin-header">
+    <div class="wrap">
+      <div class="logo">SkillStore<span>.web.id</span> — Admin</div>
+      <button class="btn btn-ghost btn-small" id="logoutBtn" style="border-color:#fff; color:#fff;">Keluar</button>
+    </div>
+  </header>
+
+  <main class="wrap admin-main">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="produk">Produk</button>
+      <button class="tab-btn" data-tab="mentor">Mentor</button>
+      <button class="tab-btn" data-tab="gratis">Materi Gratis</button>
+    </div>
+
+    <!-- ---------- TAB PRODUK ---------- -->
+    <section class="tab-panel active" id="tab-produk">
+      <div class="toolbar">
+        <h2>Kelola Produk</h2>
+        <button class="btn btn-primary btn-small" id="btnNewProduct">+ Tambah Produk</button>
+      </div>
+      <div class="msg" id="productMsg"></div>
+      <div class="form-card" id="productForm">
+        <h3 id="productFormTitle">Tambah Produk Baru</h3>
+        <input type="hidden" id="productId">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label for="productTitle">Nama Produk</label>
+            <input type="text" id="productTitle" placeholder="Contoh: Ecourse Funnel Konversi Tinggi" required>
+          </div>
+          <div class="form-group">
+            <label for="productMentor">Mentor</label>
+            <select id="productMentor" required></select>
+          </div>
+          <div class="form-group">
+            <label for="productCategory">Kategori</label>
+            <select id="productCategory" required>
+              <option value="ecourse">Ecourse</option>
+              <option value="ebook">Ebook</option>
+              <option value="plugin">Plugin WordPress</option>
+              <option value="theme">Theme</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="productDesc">Deskripsi Singkat</label>
+            <textarea id="productDesc" placeholder="Fokus ke hasil/benefit untuk pembeli" required></textarea>
+          </div>
+          <div class="form-group full">
+            <label for="productLink">Link Checkout / Referral</label>
+            <span class="help">Link referral Anda yang terhubung ke sistem mentor</span>
+            <input type="url" id="productLink" placeholder="https://..." required>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary btn-small" id="btnSaveProduct">Simpan</button>
+          <button class="btn btn-ghost btn-small" id="btnCancelProduct">Batal</button>
+        </div>
+      </div>
+      <table class="data-table">
+        <thead><tr><th>Nama</th><th>Mentor</th><th>Kategori</th><th>Aksi</th></tr></thead>
+        <tbody id="productTableBody"></tbody>
+      </table>
+    </section>
+
+    <!-- ---------- TAB MENTOR ---------- -->
+    <section class="tab-panel" id="tab-mentor">
+      <div class="toolbar">
+        <h2>Kelola Mentor</h2>
+        <button class="btn btn-primary btn-small" id="btnNewMentor">+ Tambah Mentor</button>
+      </div>
+      <div class="msg" id="mentorMsg"></div>
+      <div class="form-card" id="mentorForm">
+        <h3 id="mentorFormTitle">Tambah Mentor Baru</h3>
+        <input type="hidden" id="mentorIdField" data-original="">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="mentorId">Kode Unik</label>
+            <span class="help">huruf kecil tanpa spasi, contoh: mentor6</span>
+            <input type="text" id="mentorId" required>
+          </div>
+          <div class="form-group">
+            <label for="mentorName">Nama Mentor</label>
+            <input type="text" id="mentorName" required>
+          </div>
+          <div class="form-group">
+            <label for="mentorNiche">Niche</label>
+            <input type="text" id="mentorNiche" placeholder="Contoh: Digital Marketing" required>
+          </div>
+          <div class="form-group">
+            <label for="mentorColor">Warna Avatar</label>
+            <input type="color" id="mentorColor" value="#1F6F5C">
+          </div>
+          <div class="form-group full">
+            <label for="mentorBio">Bio Singkat</label>
+            <textarea id="mentorBio" required></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary btn-small" id="btnSaveMentor">Simpan</button>
+          <button class="btn btn-ghost btn-small" id="btnCancelMentor">Batal</button>
+        </div>
+      </div>
+      <table class="data-table">
+        <thead><tr><th>Nama</th><th>Niche</th><th>Aksi</th></tr></thead>
+        <tbody id="mentorTableBody"></tbody>
+      </table>
+    </section>
+
+    <!-- ---------- TAB GRATIS ---------- -->
+    <section class="tab-panel" id="tab-gratis">
+      <div class="toolbar">
+        <h2>Kelola Materi Gratis</h2>
+        <button class="btn btn-primary btn-small" id="btnNewFreebie">+ Tambah Materi</button>
+      </div>
+      <div class="msg" id="freebieMsg"></div>
+      <div class="form-card" id="freebieForm">
+        <h3 id="freebieFormTitle">Tambah Materi Gratis</h3>
+        <input type="hidden" id="freebieId">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label for="freebieTitle">Judul</label>
+            <input type="text" id="freebieTitle" required>
+          </div>
+          <div class="form-group full">
+            <label for="freebieDesc">Deskripsi</label>
+            <textarea id="freebieDesc" required></textarea>
+          </div>
+          <div class="form-group full">
+            <label for="freebieLink">Link Download/Akses</label>
+            <input type="url" id="freebieLink" placeholder="https://..." required>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary btn-small" id="btnSaveFreebie">Simpan</button>
+          <button class="btn btn-ghost btn-small" id="btnCancelFreebie">Batal</button>
+        </div>
+      </div>
+      <table class="data-table">
+        <thead><tr><th>Judul</th><th>Aksi</th></tr></thead>
+        <tbody id="freebieTableBody"></tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillStore — Kurasi Materi Belajar dari Mentor Tepercaya</title>
+<meta name="description" content="Kumpulan ecourse, ebook, plugin, dan theme pilihan dari mentor terkurasi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="#" class="logo">SkillStore<span>.web.id</span></a>
+    <nav class="main-nav">
+      <a href="#produk">Produk</a>
+      <a href="#gratis">Gratis</a>
+      <a href="#mentor">Mentor</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Materi belajar terkurasi, dari mentor yang sudah terbukti.</h1>
+      <p class="lede">Ecourse, ebook, plugin, dan theme pilihan dari mentor yang kami rekomendasikan langsung — bukan katalog acak, tapi kurasi.</p>
+      <div class="hero-cta">
+        <a href="#produk" class="btn btn-primary">Lihat semua produk</a>
+        <a href="#gratis" class="btn btn-ghost">Ambil materi gratis</a>
+      </div>
+    </div>
+    <div class="stat-panel" id="statPanel"></div>
+  </div>
+</section>
+
+<main class="wrap">
+  <section id="produk">
+    <div class="filter-bar">
+      <div class="chip-row" id="categoryChips"></div>
+      <select class="mentor-select" id="mentorSelect"></select>
+    </div>
+    <div class="section-head">
+      <div>
+        <h2>Produk pilihan</h2>
+        <p>Semua produk di bawah ini adalah tautan referral — Anda akan diarahkan ke sistem masing-masing mentor saat checkout.</p>
+      </div>
+    </div>
+    <div class="grid" id="productGrid">
+      <div class="empty-state">Memuat produk...</div>
+    </div>
+  </section>
+
+  <section class="freebies" id="gratis">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Sumber belajar gratis</h2>
+          <p>Ebook, checklist, dan informasi yang bisa langsung diambil tanpa biaya.</p>
+        </div>
+      </div>
+      <div class="free-grid" id="freeGrid"></div>
+    </div>
+  </section>
+
+  <section class="mentors" id="mentor">
+    <div class="section-head">
+      <div>
+        <h2>Mentor kami</h2>
+        <p>Mentor yang produknya kami rekomendasikan di halaman ini.</p>
+      </div>
+    </div>
+    <div class="mentor-grid" id="mentorGrid"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; <span id="year"></span> SkillStore — Kurasi materi belajar, bukan penjual langsung.</p>
+    <p>hello@skillstore.web.id</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="store.js"></script>
+</body>
+</html>
