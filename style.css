@@ -161,7 +161,7 @@ footer p{ font-size:13px; color:var(--muted); }
   flex-shrink:0;
 }
 .btn-logout:hover{ background:rgba(255,255,255,0.2); }
-.admin-main{ padding:32px 0 80px; }
+.admin-main{ padding-top:32px; padding-bottom:80px; }
 
 .tabs{ display:flex; gap:4px; border-bottom:1px solid var(--line); margin-bottom:28px; }
 .tab-btn{ padding:12px 18px; background:none; border:0; font-size:14px; font-weight:600; color:var(--muted); border-bottom:2px solid transparent; }
@@ -222,4 +222,5 @@ textarea{ resize:vertical; min-height:70px; }
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
   *{ transition:none !important; }
-}
+        }
+            
